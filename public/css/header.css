@@ -1,0 +1,71 @@
+*{
+	color: #FFFFFF;
+    font-family: Agency FB;
+}
+
+html{
+	margin: 0;
+    padding: 0;
+}
+
+h1{
+	font-size: 3.4em;
+	text-align: center;
+}
+
+header{
+    background-color: transparent;
+	align-items: center;
+	justify-content: space-around;
+	text-align: center;
+    width: 100%;
+    font-size: 1.2em;
+    height: 85px;
+    z-index: 150;
+    margin-top: 1%;
+}
+
+header a:hover{
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
+}
+
+ul{
+    list-style-type: none;
+    width: 50%;
+    display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+header ul{
+	justify-content: space-evenly;
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    margin-right: 7%; 
+}
+
+header section {
+    display: flex;
+    justify-content: space-between;
+}
+
+section div {
+    max-width: 300px;
+    padding: 10px;
+}
+
+section div a{
+    width: 100%;
+    display: flex;
+}
+
+.goog-te-combo option {
+ color: black;
+}
+
+.goog-te-combo  {
+    color: black;
+   }

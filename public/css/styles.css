@@ -1,0 +1,407 @@
+*{
+	color: #FFFFFF;
+    font-family: Agency FB;
+}
+
+html{
+	margin: 0;
+    padding: 0;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+h1{
+    font-size: 3.4em;
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:active{
+	color: #FFFFFF;
+}
+  
+  /* Stars container styling */
+  .stars {
+    position: fixed;
+    top: 85px;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    transform: rotate(-45deg);
+    z-index: -1;
+  }
+  
+  /* Star styling */
+  .star {
+    position: absolute;
+    top: 0; /* Placeholder for dynamic --top-offset */
+    left: 0;
+    width: 6em; /* Placeholder for dynamic --star-tail-length */
+    height: 2px; /* Placeholder for dynamic --star-tail-height */
+    background: linear-gradient(45deg, currentColor, transparent);
+    border-radius: 50%;
+    filter: drop-shadow(0 0 6px currentColor);
+    transform: translate3d(104em, 0, 0);
+    animation: fall 9s 0s linear infinite,
+               tail-fade 9s 0s ease-out infinite;
+  }
+  
+  .star:nth-child(1) {
+    top: 4vh; /* Example random offset */
+    width: 6.5em; /* Example random tail length */
+    animation-duration: 9.5s; /* Example random fall duration */
+    animation-delay: 1s; /* Example random fall delay */
+  }
+  
+  .star:nth-child(2) {
+    top: 12vh;
+    width: 7em;
+    animation-duration: 8s;
+    animation-delay: 2s;
+  }
+  
+  /* Add more nth-child rules to cover all stars (up to 50) */
+  
+  .star::before,
+  .star::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: calc(6em / -12); /* Example calculation for star width */
+    width: calc(6em / 6); /* Example calculation for star width */
+    height: 100%;
+    background: linear-gradient(45deg, transparent, currentColor, transparent);
+    border-radius: inherit;
+    animation: blink 2s linear infinite;
+  }
+  
+  .star::before {
+    transform: rotate(45deg);
+  }
+  
+  .star::after {
+    transform: rotate(-45deg);
+  }
+  
+  /* Keyframes for star animations */
+  @keyframes fall {
+    to {
+      transform: translate3d(-30em, 0, 0);
+    }
+  }
+  
+  @keyframes tail-fade {
+    0%,
+    50% {
+      width: 6em; /* Placeholder for dynamic --star-tail-length */
+      opacity: 1;
+    }
+    70%,
+    80% {
+      width: 0;
+      opacity: 0.4;
+    }
+    100% {
+      width: 0;
+      opacity: 0;
+    }
+  }
+  
+  @keyframes blink {
+    50% {
+      opacity: 0.6;
+    }
+  }
+
+main{
+	font-size: 1.3em;
+    margin-top: 10%;
+        /* display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column; */
+}
+
+img{
+    max-width: 45%;
+    max-height: 20%;
+    border-radius: 10%;
+}
+
+#Codes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+#Codes h1 {
+    margin-bottom: 20px;
+}
+
+#Codes ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+#Codes li {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+}
+
+#Codes div {
+    background-image: url(../images/fond_vedette.jpg);
+    width: 60vh;
+    height: 65vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: transform 0.3s;
+    border-radius: 5%;
+}
+
+#Codes div:hover{
+    transform: scale(1.2);
+}
+
+#Codes div ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#Codes img {
+    width: 20vh;
+    height: 10vh; /* Maintenir un ratio carré */
+    object-fit: cover; /* Assurer que l'image couvre l'espace alloué */
+}
+
+#Codes p {
+    word-break: break-word;
+    text-align: center;
+    margin: 10px 0;
+}
+
+#Codes h4 {
+    margin: 10px 0;
+}
+
+
+.button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.button:active {
+    background-color: #004494;
+}
+
+.button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+.codeSection {
+    display: flex;
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne suivante */
+    justify-content: space-between; /* Répartit uniformément l'espace entre les éléments */
+    width: 80%;
+    margin: auto;
+    gap: 20px; /* Espace entre les éléments */
+}
+
+.codeCard {
+    position: relative;
+    flex: 1 1 23%; /* S'assure que chaque élément occupe 23% de la largeur disponible */
+    max-width: 23%; /* Limite la largeur maximale à 23% pour s'assurer que chaque ligne contient 4 éléments */
+    box-sizing: border-box;
+    text-align: center;
+    margin-bottom: 20px; /* Espace vertical entre les lignes */
+    padding: 20px;
+    background: #fff;
+    color: #000;
+    clip-path: polygon(0 0, 0% 100%, 5% 97%, 10% 100%, 15% 97%, 20% 100%, 25% 97%, 30% 100%, 35% 97%, 40% 100%, 45% 97%, 50% 100%, 55% 97%, 60% 100%, 65% 97%, 70% 100%, 75% 97%, 80% 100%, 85% 97%, 90% 100%, 95% 97%, 100% 100%, 100% 0, 95% 3%, 90% 0, 85% 3%, 80% 0, 75% 3%, 70% 0, 65% 3%, 60% 0%, 55% 3%, 50% 0%, 45% 3%, 40% 0, 35% 3%, 30% 0, 25% 3%, 20% 0, 15% 3%, 10% 0, 5% 3%, 0 0);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.codeCard:hover {
+    transform: scale(1.05);
+}
+
+.codeCard img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 15px;
+}
+
+.codeCard h2 {
+    font-size: 1.8em;
+    text-align: center;
+    margin: 20px 0;
+    color: black;
+}
+
+.codeCard p {
+    font-size: 1em;
+    text-align: center;
+    margin-bottom: 15px;
+    color: black;
+}
+
+.codeCard a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.codeCard a:hover {
+    background-color: #0056b3;
+}
+
+/* Styles pour l'effet "ticket-shape" */
+.ticket-shape {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    width: 200px;
+    background-image: radial-gradient(circle at 13px 0, rgba(255,255,255,0) 0.4em, #fff 0.5em);
+    background-position: top left, top right;
+    background-repeat: no-repeat;
+    background-size: 26px 20px;
+}
+
+.codeCard .ticket-shape:before, 
+.codeCard .ticket-shape:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    background-size: inherit;
+    top: auto;
+    bottom: -20px; /* Positionne les découpes en bas */
+}
+
+.slideshow-container {
+    position: relative;
+    width: 80%;
+    max-width: 1000px;
+    margin: 100px auto;
+    z-index: 1;
+}
+
+.mySlides {
+    display: none;
+    text-align: center;
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.mySlides img {
+    width: 40%;
+    height: auto;
+}
+.wrapperPrevNext {
+    position: relative;
+    top:-175px;
+    z-index: 10 ;
+    margin: auto;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+}
+.prev, .next {
+    cursor: pointer;
+    position: relative;
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev {
+    left: 0;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    cursor: pointer;
+}
+
+.active {
+    background-color: #717171;
+}
+
+.Rejoindre{
+    text-align: center;
+}
+
+
+

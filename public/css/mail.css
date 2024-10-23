@@ -1,0 +1,228 @@
+*{
+	color: #FFFFFF;
+    font-family: Agency FB;
+}
+
+html{
+	margin: 0;
+    padding: 0;
+}
+
+h1{
+	font-size: 3.4em;
+	text-align: center;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
+}
+
+a{
+    text-decoration: none;
+}
+
+a:active{
+	color: #FFFFFF;
+}
+  
+  /* Stars container styling */
+  .stars {
+    position: fixed;
+    top: 85px;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    transform: rotate(-45deg);
+    z-index: -1;
+  }
+  
+  /* Star styling */
+  .star {
+    position: absolute;
+    top: 0; /* Placeholder for dynamic --top-offset */
+    left: 0;
+    width: 6em; /* Placeholder for dynamic --star-tail-length */
+    height: 2px; /* Placeholder for dynamic --star-tail-height */
+    background: linear-gradient(45deg, currentColor, transparent);
+    border-radius: 50%;
+    filter: drop-shadow(0 0 6px currentColor);
+    transform: translate3d(104em, 0, 0);
+    animation: fall 9s 0s linear infinite,
+               tail-fade 9s 0s ease-out infinite;
+  }
+  
+  .star:nth-child(1) {
+    top: 4vh; /* Example random offset */
+    width: 6.5em; /* Example random tail length */
+    animation-duration: 9.5s; /* Example random fall duration */
+    animation-delay: 1s; /* Example random fall delay */
+  }
+  
+  .star:nth-child(2) {
+    top: 12vh;
+    width: 7em;
+    animation-duration: 8s;
+    animation-delay: 2s;
+  }
+  
+  /* Add more nth-child rules to cover all stars (up to 50) */
+  
+  .star::before,
+  .star::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: calc(6em / -12); /* Example calculation for star width */
+    width: calc(6em / 6); /* Example calculation for star width */
+    height: 100%;
+    background: linear-gradient(45deg, transparent, currentColor, transparent);
+    border-radius: inherit;
+    animation: blink 2s linear infinite;
+  }
+  
+  .star::before {
+    transform: rotate(45deg);
+  }
+  
+  .star::after {
+    transform: rotate(-45deg);
+  }
+  
+  /* Keyframes for star animations */
+  @keyframes fall {
+    to {
+      transform: translate3d(-30em, 0, 0);
+    }
+  }
+  
+  @keyframes tail-fade {
+    0%,
+    50% {
+      width: 6em; /* Placeholder for dynamic --star-tail-length */
+      opacity: 1;
+    }
+    70%,
+    80% {
+      width: 0;
+      opacity: 0.4;
+    }
+    100% {
+      width: 0;
+      opacity: 0;
+    }
+  }
+  
+  @keyframes blink {
+    50% {
+      opacity: 0.6;
+    }
+  }
+
+ul{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+img{
+  max-width: 45%;
+  max-height: 20%;
+}
+
+h1 {
+  color: #8e44ad;
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 400;
+}
+
+
+main {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  flex-direction: column;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  max-width: 500px; 
+  margin: 0 auto;
+  padding: 30px; 
+  background-color: rgba(255, 255, 255, 0.1); 
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+
+label {
+    margin-bottom: 8px;
+    color: #666;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: left;
+}
+
+input[type="text"],
+input[type="email"] {
+    color: #0c0d13;
+
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background: #f9f9f9;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+    border-color: #8e44ad;
+    outline: none;
+}
+
+input[type="submit"] {
+    background-color: #8e44ad;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #732d91;
+    transform: translateY(-2px);
+}
+
+input[type="submit"]:active {
+    background-color: #8e44ad;
+    transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  form {
+      width: 90%;
+  }
+
+
+    input[type="text"],
+    input[type="email"] {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    input[type="submit"] {
+        padding: 12px 18px;
+        font-size: 14px;
+    }
+}
