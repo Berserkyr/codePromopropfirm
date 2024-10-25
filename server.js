@@ -8,10 +8,17 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.static('public'));
 //app.use(express.urlencoded({ extended: true }));
-const codeRoutes = require('./routes/codeRoutes'); 
-const newsletterRoutes = require('./routes/newsletterRoutes'); 
 
+//route codepromo
 app.use('/api/promocodes', codeRoutes);
+const codeRoutes = require('./routes/codeRoutes'); 
+
+//route propfirm
+const propfirmRoutes = require('./routes/propfirmRoutes'); 
+app.use('/api/propfirm', propfirmRoutes); 
+
+//route newsletter
+const newsletterRoutes = require('./routes/newsletterRoutes'); 
 app.use('/api/newsletter', newsletterRoutes);
 
 const PORT = process.env.PORT || 3001;
