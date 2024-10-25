@@ -25,10 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 const container = document.getElementById('code');
-                const totalItems = data.length; 
+                const { data: codesToShow, totalItems, itemsPerPage, currentPage } = data;
                 const totalPages = Math.ceil(totalItems / itemsPerPage);
-                const startIndex = (page - 1) * itemsPerPage;
-                const codesToShow = data.slice(startIndex, startIndex + itemsPerPage);
     
                 container.innerHTML = '';
     
@@ -39,8 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div class="row justify-content-center">
                                 <div class="col-12 text-center">
                                     <div>
-                                        <input class="checkbox-ticket" type="radio" name="ticket" id="ticket-${startIndex + index}">
-                                        <label for="ticket-${startIndex + index}">
+                                        <input class="checkbox-ticket" type="radio" name="ticket" id="ticket-${index}">
+                                        <label for="ticket-${index}">
                                             <span class="top-dots">
                                                 <span class="section dots">
                                                     <span></span><span></span><span></span><span></span>
@@ -88,11 +86,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>`;
                 });
     
-
-                setupPagination(totalPages, page);
+                // Mettre à jour la pagination
+                setupPagination(totalPages, currentPage);
             });
     }
-    // Gere la pagination
+    
     function setupPagination(totalPages, currentPage) {
         const pagination = document.getElementById('pagination');
         pagination.innerHTML = '';
@@ -139,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     
+    // Fonction pour extraire le pourcentage de réduction
     function getReductionText(text) {
         const match = text.match(/(\d+)\s*%/);
         return match ? `${match[1]}%` : text;
