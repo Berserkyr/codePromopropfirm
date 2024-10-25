@@ -15,6 +15,7 @@ app.use('/api/promocodes', codeRoutes);
 app.use('/api/newsletter', newsletterRoutes);
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+const HOST = "0.0.0.0"
+app.listen(PORT, HOST , () => {
     console.log(`Server running on port ${PORT}`);
 });
