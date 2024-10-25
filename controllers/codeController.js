@@ -6,15 +6,30 @@ exports.getCodes = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const startIndex = (page - 1) * itemsPerPage;
 
-  const query = 'SELECT * FROM codes LIMIT ?, ?';
+  // Jointure entre `code_promo` et `prop_firm` pour récupérer les informations souhaitées
+  const query = `
+    SELECT 
+      p.nom AS firm_name, 
+      p.logo_url AS firm_logo,
+      c.description AS promo_description, 
+      c.discount_percentage AS promo_discount, 
+      c.code AS promo_code
+    FROM code_promo c
+    JOIN prop_firm p ON c.prop_firm_id = p.id
+    LIMIT ?, ?
+  `;
 
   try {
       const connection = await pool.getConnection();
       const [results] = await connection.query(query, [startIndex, itemsPerPage]);
-      const [countResults] = await connection.query('SELECT COUNT(*) as count FROM codes'); // Compte total d'éléments
+      
+      // Comptage total des éléments pour la pagination
+      const [countResults] = await connection.query('SELECT COUNT(*) as count FROM code_promo');
       const totalItems = countResults[0].count;
+
       connection.release();
 
+      // Renvoi des données avec pagination
       res.json({
           data: results,
           totalItems,  
@@ -23,9 +38,10 @@ exports.getCodes = async (req, res) => {
       });
   } catch (err) {
       console.error("Erreur SQL : ", err);
-      res.status(500).json({ message: 'Erreur lors de la récupération des codes' });
+      res.status(500).json({ message: 'Erreur lors de la récupération des codes promo' });
   }
 };
+
 
 
 

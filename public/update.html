@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier Codes Promo et URL</title>
+    <script src="js/update.js" defer></script>
+</head>
+<body>
+    <h1>Modifier le Code Promo ou l'URL d'une entreprise</h1>
+
+    <!-- Liste déroulante pour sélectionner l'entreprise -->
+    <label for="company-select">Sélectionnez une entreprise :</label>
+    <input type="text" id="company-select" list="companies" placeholder="Entrez ou sélectionnez une entreprise">
+    <datalist id="companies"></datalist>
+
+    <div id="update-section">
+        <!-- Formulaire pour mettre à jour le code promo -->
+        <div id="update-code-form">
+            <h2>Mettre à jour le code promo</h2>
+            <label for="code">Nouveau code promo :</label>
+            <input type="text" id="code" placeholder="Entrez le nouveau code">
+            <button id="update-code-button">Mettre à jour le code</button>
+        </div>
+
+        <!-- Formulaire pour mettre à jour l'URL -->
+        <div id="update-url-form">
+            <h2>Mettre à jour l'URL</h2>
+            <label for="url">Nouvelle URL :</label>
+            <input type="url" id="url" placeholder="Entrez la nouvelle URL">
+            <button id="update-url-button">Mettre à jour l'URL</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

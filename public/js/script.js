@@ -25,9 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 const container = document.getElementById('code');
-                const { data: codesToShow, totalItems, itemsPerPage, currentPage } = data;
-                const totalPages = Math.ceil(totalItems / itemsPerPage);
-    
+                const codesToShow = data.data; // Accéder aux résultats paginés
+        
                 container.innerHTML = '';
     
                 codesToShow.forEach((firm, index) => {
@@ -48,11 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
                                                 </span>
                                             </span>
                                             <span class="duration">
-                                                <img src="${firm.image}" alt="${firm.nom}">
-                                                <p>${firm.nom}</p>
+                                                <img src="${firm.firm_logo}" alt="${firm.firm_name}">
+                                                <p>${firm.firm_name}</p>
                                             </span>
                                             <span class="price mt-2 pb-4 mb-3">
-                                                ${getReductionText(firm.presentation)}
+                                                ${firm.promo_discount}% de réduction
                                             </span>
                                             <span class="section dots">
                                                 <span></span><span></span><span></span><span></span>
@@ -64,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                                 <i class='uil uil-clock-two mt-3'></i>
                                             </span>
                                             <span class="time mt-2">
-                                                <h2>${firm.code}</h2>
+                                                <h2>${firm.promo_code ? firm.promo_code : 'NO CODE'}</h2>
                                             </span>
                                             <span class="bottom-dots">
                                                 <span class="section dots">
@@ -86,8 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>`;
                 });
     
-                // Mettre à jour la pagination
-                setupPagination(totalPages, currentPage);
+                setupPagination(data.totalItems, data.itemsPerPage, page);
             });
     }
     
