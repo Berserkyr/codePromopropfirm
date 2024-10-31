@@ -3,7 +3,7 @@ const pool = require('../config/db');
 // Ajoute une nouvelle propfirm a la bdd
 exports.createPropFirm = async (req, res) => {
     const { nom, description, logo_url } = req.body;
-    const query = 'INSERT INTO prop_firm (nom, description, logo_url) VALUES (?, ?, ?)';
+    const query = 'INSERT INTO prop_firm (nom, description, logo_url, created_at, updated_at ) VALUES (?, ?, ?,NOW(),NOW())';
   
     try {
       const connection = await pool.getConnection();
