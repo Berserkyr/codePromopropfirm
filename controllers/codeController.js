@@ -11,6 +11,7 @@ exports.getCodes = async (req, res) => {
     SELECT 
       p.nom AS firm_name, 
       p.logo_url AS firm_logo,
+      p.url AS url,
       c.description AS promo_description, 
       c.discount_percentage AS promo_discount, 
       c.code AS promo_code
