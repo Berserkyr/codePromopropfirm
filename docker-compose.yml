@@ -1,0 +1,15 @@
+version: '3'
+services:
+  app:
+    image: node:16  # Utilise une image de base Node.js
+    container_name: codepromopropfirm  # Donne un nom au conteneur
+    working_dir: /app
+    environment:
+      - env_file: .env
+      - NODE_ENV=production
+    ports:
+      - "3001:3001"  # Mappe le port 3000 pour accéder à ton application
+    volumes:
+      - .:/app       # Monte le code local dans le conteneur
+      - /app/node_modules  # Empêche node_modules d'être écrasé
+    command: "npm start"  # Démarre l'application
