@@ -5,7 +5,6 @@ services:
     container_name: codepromopropfirm  # Donne un nom au conteneur
     working_dir: /app
     environment:
-      - env_file: .env
       - NODE_ENV=production
     ports:
       - "3001:3001"  # Mappe le port 3000 pour accéder à ton application
