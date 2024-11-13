@@ -1,14 +1,13 @@
-version: '3'
 services:
   app:
-    image: node:16  # Utilise une version de Node adaptée à ton projet
-    container_name: codePromopropfirm
-    working_dir: /  # Définit le répertoire de travail dans le conteneur
+    image: node:16  # Utilise l'image Node.js
+    container_name: codepromopropfirm_app
+    working_dir: /codepromopropfirm  # Définit le répertoire de travail dans le conteneur
     volumes:
-      - .:/  # Monte tout le répertoire de ton projet dans /app dans le conteneur
-      - /node_modules  # Empêche le dossier node_modules d'être écrasé par le volume
+      - .:/codepromopropfirm  # Monte le répertoire local dans /codepromopropfirm dans le conteneur
+      - /codepromopropfirm/node_modules  # Empêche node_modules d'être écrasé
     environment:
       - NODE_ENV=production
     ports:
-      - "3001:3001"  # Mappe le port 3000 (si c'est le port que ton serveur utilise)
-    command: "npm start"  # Démarre l'application avec npm start
+      - "3000:3000"  # Mappe le port 3000 pour accéder à ton application
+    command: bash -c "npm install && npm start"
