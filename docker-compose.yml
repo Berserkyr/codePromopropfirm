@@ -3,10 +3,10 @@ services:
   app:
     image: node:16  # Utilise une version de Node adaptée à ton projet
     container_name: codePromopropfirm
-    working_dir: /codePromopropfirm  # Définit le répertoire de travail dans le conteneur
+    working_dir: /  # Définit le répertoire de travail dans le conteneur
     volumes:
-      - .:/codePromopropfirm  # Monte tout le répertoire de ton projet dans /app dans le conteneur
-      - /codePromopropfirm/node_modules  # Empêche le dossier node_modules d'être écrasé par le volume
+      - .:/  # Monte tout le répertoire de ton projet dans /app dans le conteneur
+      - /node_modules  # Empêche le dossier node_modules d'être écrasé par le volume
     environment:
       - NODE_ENV=production
     ports:
